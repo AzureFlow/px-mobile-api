@@ -1,0 +1,35 @@
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = "generate-api"
+primary_region = "iad"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+#[processes]
+#  app = ""
+#  cron = "cron -f"
+
+# https://fly.io/docs/reference/configuration/#the-deploy-section
+#[deploy]
+#  release_command = "pnpm run drizzle:push"
+#  strategy = "bluegreen"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  AXIOM_DATASET = "prod"
+  COMPRESS_RESPONSE = false
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  processes = ["app"]
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250

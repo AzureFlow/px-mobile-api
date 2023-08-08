@@ -1,0 +1,7 @@
+{
+	"watch": ["./src/**/*.ts"],
+	"exec": "node --loader ts-paths-esm-loader --no-warnings ./src/api/server.ts",
+	"ext": "js ts",
+	"delay": 250,
+	"quiet": true
+}
