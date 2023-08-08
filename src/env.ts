@@ -13,18 +13,10 @@ const env = createEnv({
 		API_SECRET: z.string().min(32),
 		AXIOM_DATASET: z.string().min(1).default("test"),
 		AXIOM_TOKEN: z.string().startsWith("xaat-").length(41),
-		PORT: z
-			.string()
-			.default("3000")
-			.transform((str) => parseInt(str, 10))
-			.pipe(z.number().int().nonnegative().lte(65535)),
+		PORT: z.coerce.number().int().nonnegative().lte(65535).default(3000),
 		COMPRESS_RESPONSE: z.string().transform((str) => str !== "false" && str !== "0"),
 		DATABASE_URL: z.string().url(),
-		JWT_AUTH_MINUTES: z
-			.string()
-			.default("60")
-			.transform((s) => parseInt(s, 10))
-			.pipe(z.number()),
+		JWT_AUTH_MINUTES: z.coerce.number().default(60),
 	},
 	runtimeEnv: process.env,
 });
