@@ -24,7 +24,7 @@ export const SDK_VERSIONS = {
 	"3.0.5": parseSemVer("3.0.5")!,
 } as const;
 
-export const APP_DATABASE: { [key: string]: PxApp } = {
+export const APP_DATABASE = {
 	hibbett: {
 		sdkNumber: SDK_VERSIONS["1.15.2"],
 		appName: "Hibbett | City Gear",
@@ -93,7 +93,7 @@ export const APP_DATABASE: { [key: string]: PxApp } = {
 		userAgent: "TextNow/23.27.1 (iPhone12,1; iOS 15.2; Scale/2.00)",
 		batteryString: "ji.b@a421ef6",
 	},
-};
+} as const satisfies { [key: string]: PxApp };
 
 export const NETWORK_TYPES = ["3G", "4G"];
 export const NETWORK_CARRIERS = [
@@ -149,5 +149,5 @@ export interface PxApp {
 
 	// https://docs.perimeterx.com/docs/android-sdk-react-native-integration-guide#adding-custom-parameters
 	// Max 10
-	extraData?: string[];
+	extraData?: ReadonlyArray<string>;
 }
