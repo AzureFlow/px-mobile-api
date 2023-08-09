@@ -21,8 +21,8 @@
 		"drizzle:push": "drizzle-kit push:mysql",
 		"preinstall": "npx only-allow pnpm",
 		"lint": "eslint src",
-		"prettier:check": "prettier --check --plugin-search-dir=. .",
-		"prettier:format": "prettier --write --plugin-search-dir=. .",
+		"prettier:check": "prettier --check .",
+		"prettier:format": "prettier --write .",
 		"start": "node dist/api/server.js"
 	},
 	"dependencies": {

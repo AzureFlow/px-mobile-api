@@ -4,11 +4,7 @@ module.exports = {
 	root: true,
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint", "import"],
-	extends: [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended",
-	],
+	extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	parserOptions: {
 		sourceType: "module",
 		ecmaVersion: "ES2021",
