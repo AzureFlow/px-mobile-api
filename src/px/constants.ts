@@ -95,7 +95,7 @@ export const APP_DATABASE = {
 	},
 } as const satisfies { [key: string]: PxApp };
 
-export const NETWORK_TYPES = ["3G", "4G"];
+export const NETWORK_TYPES = ["3G", "4G"] as const;
 export const NETWORK_CARRIERS = [
 	"T-Mobile",
 	"Vodafone",
@@ -134,7 +134,7 @@ export const NETWORK_CARRIERS = [
 	"Unicel",
 	"Viaero",
 	"UTBox",
-];
+] as const;
 
 export const PX_COLLECTOR_TEMPLATE = "https://collector-{APP_ID}.perimeterx.net/api/v1/collector/mobile";
 

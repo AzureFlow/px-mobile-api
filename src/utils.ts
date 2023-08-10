@@ -37,7 +37,7 @@ export function randomFloat(min: number, max: number) {
 	return Math.random() * (max - min + 1) + min;
 }
 
-export function randomItem<T>(items: T[]): T {
+export function randomItem<T>(items: readonly T[]): T {
 	return items[Math.floor(Math.random() * items.length)];
 }
 
