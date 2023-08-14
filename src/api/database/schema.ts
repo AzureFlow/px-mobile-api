@@ -1,4 +1,5 @@
 import { int, mysqlTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/mysql-core";
+import { sql } from "drizzle-orm";
 
 export const users = mysqlTable(
 	"users",
@@ -13,8 +14,13 @@ export const users = mysqlTable(
 			// length: 97, // argon2
 		}).notNull(),
 		remainingQuota: int("remaining_quota").notNull(),
-		createdAt: timestamp("created_at").defaultNow().notNull(),
-		updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+		createdAt: timestamp("created_at")
+			.notNull()
+			.default(sql`CURRENT_TIMESTAMP`),
+		updatedAt: timestamp("updated_at")
+			.onUpdateNow()
+			.notNull()
+			.default(sql`CURRENT_TIMESTAMP`),
 		expiresAt: timestamp("expires_at"),
 		lastLogin: timestamp("last_login"),
 	},
@@ -35,7 +41,7 @@ export const userMapping = mysqlTable(
 			.unique()
 			.notNull(),
 		discordId: varchar("discord_id", {
-			length: 18,
+			length: 32,
 		})
 			.unique()
 			.notNull(),

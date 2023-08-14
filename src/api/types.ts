@@ -86,9 +86,8 @@ const adminBaseSchema = z.object({
 });
 
 export const addUserSchema = adminBaseSchema.extend({
-	discordId: z.string().length(18, "Malformed Discord ID"),
+	discordId: z.string().min(17, "Malformed Discord ID").max(20, "Malformed Discord ID"),
 	requests: z.number().nonnegative(),
-	// isTrial: z.boolean().optional(),
 	expiresAt: z.string().datetime().optional().nullable(),
 });
 
