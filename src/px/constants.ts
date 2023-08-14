@@ -93,6 +93,14 @@ export const APP_DATABASE = {
 		userAgent: "TextNow/23.27.1 (iPhone12,1; iOS 15.2; Scale/2.00)",
 		batteryString: "ji.b@a421ef6",
 	},
+	stockx: {
+		sdkNumber: SDK_VERSIONS["1.15.2"],
+		appName: "StockX",
+		appVersion: "4.14.43",
+		bundleID: "com.stockx.stockx",
+		appId: "PX16uD0kOF",
+		userAgent: "TODO",
+	},
 } as const satisfies { [key: string]: PxApp };
 
 export const NETWORK_TYPES = ["3G", "4G"] as const;

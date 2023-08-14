@@ -53,7 +53,7 @@ const ApiTask = z.object({
 const PXMobileTask = ApiTask.extend({
 	type: z.literal("PxMobileProxy"),
 	proxy: z.string().url(),
-	site: z.enum(["walmart", "hibbett", "snipes_usa", "snipes_eu", "shiekh"]),
+	site: z.enum(["walmart", "hibbett", "snipes_usa", "snipes_eu", "shiekh", "stockx"]),
 });
 
 const PXCaptcha = ApiTask.extend({
