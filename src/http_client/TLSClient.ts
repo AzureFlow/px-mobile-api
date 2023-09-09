@@ -12,6 +12,7 @@ import {
 } from "./types.js";
 import { execSync } from "child_process";
 import createDebugMessages from "debug";
+import { existsSync } from "fs";
 
 const debug = createDebugMessages("tls-client:client");
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -38,12 +39,18 @@ export default class TLSClient implements TLSClientInstance {
 		});
 	}
 
-	destroySession(payload: TLSClientReleaseSessionPayload): TLSClientReleaseSessionResponse {
+	destroySession(sessionId: string): TLSClientReleaseSessionResponse {
+		const payload: TLSClientReleaseSessionPayload = {
+			sessionId,
+		};
 		const resp = this.wrapper.destroySession(JSON.stringify(payload));
 		return JSON.parse(resp) as TLSClientReleaseSessionResponse;
 	}
 
-	async destroySessionAsync(payload: TLSClientReleaseSessionPayload): Promise<TLSClientReleaseSessionResponse> {
+	async destroySessionAsync(sessionId: string): Promise<TLSClientReleaseSessionResponse> {
+		const payload: TLSClientReleaseSessionPayload = {
+			sessionId,
+		};
 		return new Promise((resolve) => {
 			this.wrapper.destroySession.async(JSON.stringify(payload), (error: Error, response: string) => {
 				const clientResponse: TLSClientReleaseSessionResponse = JSON.parse(response);
@@ -98,9 +105,13 @@ const createWrapper = (libVersion: string): LibraryObject<never> => {
 		throw new Error("Invalid platform!");
 	}
 
-	debug(`Loading shared library: "${sharedLibraryFilename}"`);
+	const libFile = join(__dirname, "../../lib", sharedLibraryFilename);
+	debug(`Loading shared library: "${libFile}"`);
+	if (!existsSync(libFile)) {
+		throw new Error("Shared library not found!");
+	}
 
-	return Library(join(__dirname, "../../lib", sharedLibraryFilename), {
+	return Library(libFile, {
 		request: ["string", ["string"]],
 		getCookiesFromSession: ["string", ["string"]],
 		addCookiesToSession: ["string", ["string"]],

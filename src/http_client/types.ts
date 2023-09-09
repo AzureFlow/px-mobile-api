@@ -54,8 +54,8 @@ export interface TLSClientInstance {
 	getCookiesFromSessionAsync: (
 		payload: TLSClientFetchCookiesForSessionRequestPayload,
 	) => Promise<TLSClientFetchCookiesForSessionResponse>;
-	destroySession: (payload: TLSClientReleaseSessionPayload) => TLSClientReleaseSessionResponse;
-	destroySessionAsync: (payload: TLSClientReleaseSessionPayload) => Promise<TLSClientReleaseSessionResponse>;
+	destroySession: (sessionId: string) => TLSClientReleaseSessionResponse;
+	destroySessionAsync: (sessionId: string) => Promise<TLSClientReleaseSessionResponse>;
 }
 
 export interface TLSClientRequestPayload {

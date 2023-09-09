@@ -59,6 +59,9 @@ export default async function fetch(url: string, init?: FetchInit): Promise<Resp
 	const resp = await tlsClient.requestAsync(payload);
 	debug("response: %O", resp);
 
+	// Free request
+	tlsClient.destroySession(sessionId);
+
 	// Return result
 	if (resp.status === 0) {
 		if (resp.body.includes("No connection could be made because the target machine actively refused it.")) {
@@ -84,11 +87,6 @@ export default async function fetch(url: string, init?: FetchInit): Promise<Resp
 			}
 		}
 	}
-
-	// Free request
-	tlsClient.destroySession({
-		sessionId: sessionId,
-	});
 
 	return new Response(resp.body, {
 		headers: headers,
