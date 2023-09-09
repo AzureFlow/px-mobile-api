@@ -28,9 +28,9 @@ export const APP_DATABASE = {
 	hibbett: {
 		sdkNumber: SDK_VERSIONS["1.15.2"],
 		appName: "Hibbett | City Gear",
-		appVersion: "6.4.1",
+		appVersion: "6.5.0",
 		bundleID: "com.hibbett.android",
-		userAgent: "Hibbett Sports/6.4.1 (redroid11_arm64; android 11)", // TODO: replacements
+		userAgent: "Hibbett Sports/6.5.0 (redroid11_arm64; android 11)", // TODO: replacements
 		appId: "PX9Qx3Rve4",
 	},
 	snipes_usa: {
