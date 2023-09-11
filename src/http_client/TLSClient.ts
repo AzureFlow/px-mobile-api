@@ -39,6 +39,10 @@ export default class TLSClient implements TLSClientInstance {
 		});
 	}
 
+	freeMemory(id: string): void {
+		this.wrapper.freeMemory(id);
+	}
+
 	destroySession(sessionId: string): TLSClientReleaseSessionResponse {
 		const payload: TLSClientReleaseSessionPayload = {
 			sessionId,

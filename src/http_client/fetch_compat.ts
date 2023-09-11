@@ -60,6 +60,7 @@ export default async function fetch(url: string, init?: FetchInit): Promise<Resp
 	debug("response: %O", resp);
 
 	// Free request
+	tlsClient.freeMemory(resp.id);
 	tlsClient.destroySession(sessionId);
 
 	// Return result

@@ -154,7 +154,8 @@ export interface TLSPriorityParam {
 }
 
 export interface TLSClientResponseData {
-	sessionId?: string;
+	id: string;
+	sessionId: string;
 	status: number;
 	target: string;
 	body: string;
