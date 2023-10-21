@@ -1,5 +1,7 @@
-import { int, mysqlTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlTableCreator, timestamp, uniqueIndex, varchar } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
+
+const mysqlTable = mysqlTableCreator((name) => `pxm_${name}`);
 
 export const users = mysqlTable(
 	"users",
