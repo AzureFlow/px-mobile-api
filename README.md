@@ -2,6 +2,8 @@
 
 An API that automatically generates PerimeterX mobile cookies 🤖.
 
+This project is provided "as-is" and without warranty of any kind. It's likely to be broken by updates in the future and is meant to be used as a resource to learn more about reverse engineering.
+
 # ⚙️ Setup
 
 ## 💻 Local
@@ -33,7 +35,7 @@ Alternatively, use `cli.ts` for local testing.
 
 # 📚 Documentation
 
-TODO
+See [here](docs/app-versions.md) for app version details.
 
 # 🧞 Commands
 
